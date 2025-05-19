@@ -59,11 +59,16 @@
               <img src="love.gif" alt="浪漫动图" style="max-width: 80%; height: auto; border-radius: 12px;">
               <p style="font-size: 18px; color: #d6336c; margin-top: 10px;">我望着月亮 却只看到你 ❤️</p>
             </div>
+            <div style="text-align: center; margin-top: 20px;">
+              <button onclick="playMusic()" style="font-size: 18px; padding: 12px 24px; background-color: #d6336c; color: white; border: none; border-radius: 8px; cursor: pointer;">
+              点击播放音乐 🎶
+              </button>
+            </div>
         </div>
 
     </div>
 
-    <audio preload="auto" autoplay="" id="media" src="love.mp3" autoplay preload loop="loop"></audio>
+    <audio id="media" src="love.mp3" loop muted></audio>
 
     <script>
         (function () {
@@ -224,7 +229,18 @@
             runAsync().start();
         })();
     </script>
-
+    <script>
+      function playMusic() {
+        const audio = document.getElementById("media");
+        audio.muted = false;
+        audio.play().then(() => {
+          console.log("音乐播放成功 🎵");
+        }).catch((e) => {
+          alert("浏览器拦截了自动播放，请再点一次~");
+          console.log(e);
+        });
+      }
+</script>
 
 
 </body>
